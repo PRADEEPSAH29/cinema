@@ -138,6 +138,7 @@ body {
     border-radius: 100px;
     cursor: pointer;
     transition: .3s ease;
+     text-decoration: none;
 }
     .btn {
     margin-top: 50px;
@@ -210,6 +211,8 @@ body {
 .header btn white-btn{
 	text-align: center;
     margin-top: 50px;
+    text-decoration: none;
+     color: white;
 }
 
 
@@ -449,6 +452,8 @@ footer{
 
 .ta-footer-title h4 {
     color: white;
+    
+    
 }
 
    
