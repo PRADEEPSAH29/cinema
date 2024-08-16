@@ -1,0 +1,450 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.header {
+     display: flex;
+    justify-content: space-between; /* Space between left and right elements */
+    align-items: center; /* Center align items vertically */
+    padding: 10px 20px; /* Padding inside the header */
+    background-color: rgb(42,42,68);
+    color: white; /* Text color */
+    border-bottom: 2px solid #444;
+}
+    .btn {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .sign-nav {
+    display: flex;
+    align-items: center; 
+}
+
+.sign-left {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between elements */
+}
+.sign-left p {
+  align-items: center;
+  width: 300px;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: .3s ease;
+} 
+  .text-container {
+    text-align: center; 
+  } 
+    .text-container p {
+    margin: 0;
+    font-size: 18px; /* Font size for the text */
+    font-weight: bold;
+    color: #fff;
+
+}
+.fnav{
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+    color: rgb(42,42,68);
+    background-color: rgb(42,42,68);
+}
+
+.slider {
+    position: relative;
+    max-width: 100%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.slides {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide img {
+    width: 100%;
+    display: block;
+    border-radius: 50px 20px;
+}
+
+.fade {
+    opacity: 1;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.fnav .left{
+    display: flex;
+    
+}
+.fnav button{
+     margin-inline: 10px;
+    width: 40px;
+    height: 33px;
+    border: none;
+    outline: none;
+    text-align: center;
+    margin-top: 50px;
+    border-radius: 3px;
+    
+    }
+.sign-left .btn{
+    width: 130px;
+    height: 40px;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.4);
+    border: none;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: .3s ease;
+}
+    .btn {
+    margin-top: 50px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, color 0.3s ease; 
+    }  
+    .white-btn {
+    background-color: white;
+    color: white; /* Dark text color for contrast */
+   
+}
+
+/* Styling for the standard button */
+.btn:not(.white-btn) {
+    background-color: #007BFF; /* Blue color for other buttons */
+    color: white;
+}  
+    .btn:hover {
+    background-color: #0056b3; /* Darker blue for hover effect */
+    color: white;
+    }    
+    .sign-left i {
+    font-size: 24px; /* Icon size */
+    color: white; /* Icon color */
+}
+
+.left a{
+	display: flex;
+    height: auto;
+    width: auto;
+    background-color: auto;
+    font-weight: bolder;
+    background: rgba(245, 96, 51, 0.49);
+    border: 3px solid red;
+    border-radius: 15px;
+    margin-top: 100px;
+  
+}
+.left img{
+    width: 13%;
+  
+}
+.left input{
+    margin-inline: 10px;
+    width: 420px;
+    height: 33px;
+    border: none;
+    outline: none;
+    text-align: center;
+    margin-top: 50px;
+    border-radius: 3px;
+}
+
+.fnav .right{
+    display: flex;
+    margin-top: 16px;
+
+}
+
+.right p{
+    margin-inline: 22px;
+    font-size: 22px;
+    
+}
+.header btn white-btn{
+	text-align: center;
+    margin-top: 50px;
+}
+
+
+.right button{
+    margin-inline: 22px;
+    width: 80px;
+    height: 27px;
+    border: none;
+    border-radius: 2px;
+    background-color: rgb(251, 59, 91);
+    color: white;
+}
+
+.right i{
+    margin-inline: 22px;
+    font-size: 22px;
+}
+
+.sec-nav {
+    display: flex; /* Change from inline-block to flex for better layout control */
+    padding: 10px 20px;
+    color: white;
+    background-color: #007BFF; /* Blue color */
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.sec-nav .s-left {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.sec-nav a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    font-size: 16px; /* Adjust font size as needed */
+}
+
+.sec-nav a:hover {
+    color: #ff0000; /* Change color on hover */
+}
+
+.sec-nav i {
+    margin-right: 5px; /* Space between icon and text */
+}
+
+.sec-nav p {
+    margin: 0; /* Remove default margin for paragraphs */
+}
+  .nav-link {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  font-size: 16px; /* Adjust font size */
+}
+
+.nav-link:hover {
+  color: #ddd; /* Change color on hover */
+}
+
+.nav-link i {
+  margin-right: 8px; /* Space between icon and text */
+}
+
+.sec-nav .s-right{
+    display: flex;
+}
+.sec-nav p:hover{
+    color: rgb(245, 70, 99);
+    cursor: pointer;
+    font-weight: 600;
+
+}
+
+.s-left p{
+    margin-inline: 16px;
+}
+
+.s-right p{
+    margin-inline: 16px;
+}
+
+.main img{
+    width: 100%;
+}
+.container h2{
+	
+    width: 17%;
+    margin-block: 15px;
+    border-radius: 50px 20px;
+    text-align: center;
+}
+.container {
+	text-align: center;
+    
+}
+.container .card{
+    display: flex;
+    justify-content: center;
+    justify-content: space-around;
+
+}
+.card img{
+    width: 17%;
+    margin-block: 15px;
+    border-radius: 50px 20px;
+ 
+}
+.banner img{
+    width: 100%;
+    margin-top: 44px;
+}
+.premiere{
+    background-color: rgb(8, 8, 19);
+    color: white;
+    padding: 33px;
+    margin-top: 44px;
+    text-align: center;
+
+} 
+.container .card {
+    margin-top: 11px;
+
+    
+}
+
+.footer{
+    background-color: rgb(227, 218, 218);
+    padding: 33px;
+    margin-top: 44px;
+   
+}
+.footer img{
+    width: 32%;
+    margin-left: 39%;
+    border-top: 2px solid gray;
+   
+}
+.footer .icon{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+     
+    
+}
+.icon i{
+    margin-inline:22px ;
+    font-size: 25px;
+    font-size: 36px;
+   
+    }
+footer{
+    background-color: #111;
+}
+.footerContainer{
+    width: 100%;
+    padding: 70px 30px 20px ;
+}
+.socialIcons{
+    display: flex;
+    justify-content: center;
+}
+.socialIcons a{
+    text-decoration: none;
+    padding:  10px;
+    background-color: white;
+    margin: 10px;
+    border-radius: 50%;
+}
+.socialIcons a i{
+    font-size: 2em;
+    color: black;
+    opacity: 0,9;
+}
+/* Hover affect on social media icon */
+.socialIcons a:hover{
+    background-color: #111;
+    transition: 0.5s;
+}
+.socialIcons a:hover i{
+    color: white;
+    transition: 0.5s;
+}
+.footerNav{
+    margin: 30px 0;
+}
+.footerNav ul{
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+}
+.footerNav ul li a{
+    color:white;
+    margin: 20px;
+    text-decoration: none;
+    font-size: 1.3em;
+    opacity: 0.7;
+    transition: 0.5s;
+
+}
+.footerNav ul li a:hover{
+    opacity: 1;
+}
+.footerBottom{
+    background-color: #000;
+    padding: 20px;
+    text-align: center;
+}
+.footerBottom p{
+    color: white;
+}
+.designer{
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin: 0px 5px;
+}
+@media (max-width: 700px){
+    .footerNav ul{
+        flex-direction: column;
+    } 
+    .footerNav ul li{
+        width:100%;
+        text-align: center;
+        margin: 10px;
+    }
+    .socialIcons a{
+        padding: 8px;
+        margin: 4px;
+    }
+}
+    
