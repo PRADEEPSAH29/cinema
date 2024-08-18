@@ -322,7 +322,7 @@ body {
 }
 .card img{
     width: 17%;
-    margin-block: 15px;
+    margin-block: 1px;
     border-radius: 50px 20px;
  
 }
