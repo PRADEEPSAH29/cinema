@@ -370,8 +370,13 @@ body {
    
     }
 footer{
-    background-color: #111;
-}
+        text-align: center;
+        padding: 10px 0;
+        background: rgb(192, 186, 186);
+        color: #4f4b4b;
+        width: 100%;
+        bottom: 0;
+      }
 .footerContainer{
     width: 100%;
     padding: 70px 30px 20px ;
@@ -450,11 +455,20 @@ footer{
         margin: 4px;
     }
 
+}
 .ta-footer-title h4 {
+  color: white;
+  margin-top: 8%;
+
+}
+.footerBottom{
+    background-color: #000;
+    padding: 20px;
+    text-align: center;
+}
+.footerBottom p{
     color: white;
     
     
 }
-
-   
 }
