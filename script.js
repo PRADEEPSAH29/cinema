@@ -1,3 +1,20 @@
+document.querySelectorAll('.watch-trailer').forEach(function(button) {
+    button.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default link behavior
+        var videoContainer = this.nextElementSibling;
+        var iframe = videoContainer.querySelector('iframe');
+        var videoId = this.getAttribute('data-video-id');
+
+        // Toggle the display of the video container
+        if (videoContainer.style.display === 'none' || videoContainer.style.display === '') {
+            videoContainer.style.display = 'block';
+            iframe.src = 'https://www.youtube.com/embed/' + videoId;
+        } else {
+            videoContainer.style.display = 'none';
+            iframe.src = '';
+        }
+    });
+});
 let slideIndex = 0;
 showSlides();
 
