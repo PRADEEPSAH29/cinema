@@ -321,7 +321,7 @@ body {
 
 }
 .card img{
-    width: 17%;
+  
     margin-block: 1px;
     border-radius: 50px 20px;
  
@@ -470,5 +470,73 @@ footer{
     color: white;
     
     
+    
 }
-}
+.card {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px; /* Space between images */
+            padding: 20px;
+        }
+
+        .image-wrapper {
+            position: relative;
+            width: 350px; /* Image width */
+            height: 550px; /* Image height */
+        }
+
+        /* The image */
+        .my-image-class {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cover the area without stretching */
+        }
+        .poster:hover{
+            transform: scale(1.3);
+        }
+
+        /* Overlay styling */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease; /* Smooth transition */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        /* Show overlay on hover */
+        .image-wrapper:hover .overlay {
+            opacity: 1;
+        }
+
+        /* Button styles */
+        .btn {
+            background: #FF5733; /* Button color */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background 0.3s ease; /* Smooth transition */
+        }
+
+        .btn:hover {
+            background: #C70039; /* Darker color on hover */
+        }
+
+        .btn:focus {
+            outline: none; /* Remove outline on focus */
+        }
