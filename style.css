@@ -822,7 +822,7 @@ footer{
 
     .header .sign-nav, .header .sign-left, .header .sign-right {
         align-items: center; /* Center items vertically */
-	margin-right: -10px;
+	
     }
 
     .btn-container {
