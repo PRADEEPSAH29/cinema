@@ -15,7 +15,6 @@ body {
     padding: 10px 20px; /* Padding inside the header */
     background-color: rgb(42,42,68);
     color: white; /* Text color */
-    border-bottom: 2px solid #444;
 
     }
     .sign-nav {
@@ -239,6 +238,8 @@ body {
     border-radius: 5px;
     font-weight: bold;
     transition: background-color 0.3s ease;
+    height: 50px;
+    margin: 2px;
 }
 
 .sec-nav .s-left {
