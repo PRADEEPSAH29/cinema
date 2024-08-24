@@ -49,12 +49,15 @@ body {
     }   
 
 .fnav{
+    margin: 10px;
     height: 120px;
     display: flex;
     justify-content: center;
     justify-content: space-around;
     color: rgb(42,42,68);
-    background-color: rgb(42,42,68);
+    background: linear-gradient(to right, #2c3e50, #1e3c72, #009688, #ff6f61);
+    color: white;
+    border-radius: 5px;
 }
 
 .slider {
@@ -231,7 +234,8 @@ body {
     display: flex; /* Change from inline-block to flex for better layout control */
     padding: 10px 20px;
     color: white;
-    background-color: #007BFF; /* Blue color */
+    background: linear-gradient(to right, #ff7e5f, #feb47b, #ff6f61, #d4a5a5, #c9d6ff, #e2a5a5);
+    color: white;
     border-radius: 5px;
     font-weight: bold;
     transition: background-color 0.3s ease;
