@@ -456,6 +456,7 @@ footer{
             flex-wrap: wrap;
             gap: 10px; /* Space between images */
             padding: 20px;
+	    justify-content: space-around;
         }
 
         .image-wrapper {
