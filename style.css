@@ -600,11 +600,9 @@ footer{
         flex-direction: column;
     }
 
-     .sign-left, .sign-right {
-        margin-top: 10px;
-
-    .left input{ .sign-left, .sign-right {
-        margin-right: 10px;
+    .sign-left, .sign-right {
+        margin-top: -80px;
+         margin-left: 200px;
     }
 
     .text-container p {
