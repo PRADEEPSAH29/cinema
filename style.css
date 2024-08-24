@@ -600,9 +600,14 @@ footer{
         flex-direction: column;
     }
 
-    .sign-left, .sign-right {
+   .sign-left, .sign-right {
         margin-top: -80px;
-         margin-left: 200px;
+         margin-left: 250px;
+    } 
+         .left img{
+    width: 60%;
+    height: 150px;
+     transform: translateY(-18px);
     }
 
     .text-container p {
