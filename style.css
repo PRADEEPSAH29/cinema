@@ -783,6 +783,33 @@ footer{
     height: 100%;
 }
 @media (max-width: 768px) {
+	.premiere {
+    padding: 10px;
+    text-align: center;
+}
+
+.containers {
+    width: 100%;
+}
+
+.card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Adjust the gap between items */
+    justify-content: center;
+}
+
+.image-wrapper {
+    position: relative;
+    width: calc(50% - 10px); /* Two items per row, accounting for the gap */
+    box-sizing: border-box;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
     .btn {
         width: 30%; /* Full width on mobile for easier clicking */
         box-sizing: border-box; /* Ensure padding and border are included in width */
@@ -851,30 +878,3 @@ footer{
             text-align: center;
             margin-right: 150px;
 	}
-.premiere {
-    padding: 10px;
-    text-align: center;
-}
-
-.containers {
-    width: 100%;
-}
-
-.card {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px; /* Adjust the gap between items */
-    justify-content: center;
-}
-
-.image-wrapper {
-    position: relative;
-    width: calc(50% - 10px); /* Two items per row, accounting for the gap */
-    box-sizing: border-box;
-}
-
-.image-wrapper img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
