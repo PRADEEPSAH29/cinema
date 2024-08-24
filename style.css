@@ -757,3 +757,46 @@ footer{
     width: 100%;
     height: 100%;
 }
+@media (max-width: 768px) {
+    .btn {
+        width: 100%; /* Full width on mobile for easier clicking */
+        box-sizing: border-box; /* Ensure padding and border are included in width */
+    }
+
+    .header, .fnav, .text-container, .sign-nav, .sign-left, .sign-right {
+        flex-direction: column; /* Stack items vertically */
+        text-align: center; /* Center align text and elements */
+    }
+
+    .header .sign-nav, .header .sign-left, .header .sign-right {
+        align-items: center; /* Center items vertically */
+    }
+
+    .btn-container {
+        display: flex;
+        justify-content: center; /* Center align buttons horizontally */
+        margin-top: 10px; /* Margin for spacing */
+    }
+
+    .footer .socialIcons a {
+        margin: 5px; /* Adjust margin for social icons */
+    }
+
+    .footer img {
+        width: 100%; /* Full width for footer images */
+        margin-left: 0; /* Remove margin on mobile */
+    }
+}
+
+/* Ensure that buttons in specific containers are centered */
+.btn-container {
+    display: flex;
+    justify-content: center; /* Center align buttons horizontally */
+    margin: 20px 0; /* Spacing around the button container */
+}
+
+/* Example container for button alignment */
+.container {
+    text-align: center; /* Center align text and elements in container */
+}
+
