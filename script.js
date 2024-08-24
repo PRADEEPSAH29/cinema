@@ -1,33 +1,53 @@
-document.addEventListener('DOMContentLoaded', function() {
-    var modal = document.getElementById('videoModal');
-    var iframe = document.getElementById('videoFrame');
-    var closeBtn = document.getElementsByClassName('close')[0];
-    var watchTrailerButtons = document.getElementsByClassName('watch-trailer');
+document.addEventListener('DOMContentLoaded', function () {
+    const modals = document.querySelectorAll('.modal');
+    const closeButtons = document.querySelectorAll('.modal .close');
+    const trailerButtons = document.querySelectorAll('.watch-trailer');
 
-    // Open modal with the correct video
-    Array.from(watchTrailerButtons).forEach(function(btn) {
-        btn.addEventListener('click', function(event) {
-            event.preventDefault();
-            var videoId = btn.getAttribute('data-video-id');
-            iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
-            modal.style.display = 'flex'; // Show the modal
+    // Open modal
+    trailerButtons.forEach(button => {
+        button.addEventListener('click', function (e) {
+            e.preventDefault();
+            const videoId = this.getAttribute('data-video-id');
+            const modalId = this.getAttribute('data-modal-id');
+            const modal = document.getElementById(modalId);
+            const iframe = modal.querySelector('iframe');
+            
+            // Set video source
+            iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+            
+            // Show modal
+            modal.style.display = 'block';
         });
     });
 
     // Close modal
-    closeBtn.addEventListener('click', function() {
-        modal.style.display = 'none'; // Hide the modal
-        iframe.src = ''; // Stop the video
+    closeButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const modal = this.closest('.modal');
+            const iframe = modal.querySelector('iframe');
+            
+            // Stop video playback
+            iframe.src = '';
+            
+            // Hide modal
+            modal.style.display = 'none';
+        });
     });
 
-    // Close modal if user clicks outside of modal content
-    window.addEventListener('click', function(event) {
-        if (event.target == modal) {
-            modal.style.display = 'none'; // Hide the modal
-            iframe.src = ''; // Stop the video
+    // Close modal when clicking outside
+    window.addEventListener('click', function (e) {
+        if (e.target.classList.contains('modal')) {
+            const iframe = e.target.querySelector('iframe');
+            
+            // Stop video playback
+            iframe.src = '';
+            
+            // Hide modal
+            e.target.style.display = 'none';
         }
     });
 });
+
 let slideIndex = 0;
 showSlides();
 
