@@ -13,7 +13,6 @@ body {
     justify-content: space-between; /* Space between left and right elements */
     align-items: center; /* Center align items vertically */
     padding: 10px 20px; /* Padding inside the header */
-    background-color: rgb(42,42,68);
     color: white; /* Text color */
 
     }
@@ -330,6 +329,7 @@ body {
 .banner img{
     width: 100%;
     margin-top: 44px;
+    border-radius: 5px;
 }
 .premiere{
     background-color: rgb(8, 8, 19);
