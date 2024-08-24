@@ -1,17 +1,30 @@
-document.querySelectorAll('.watch-trailer').forEach(function(button) {
-    button.addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent default link behavior
-        var videoContainer = this.nextElementSibling;
-        var iframe = videoContainer.querySelector('iframe');
-        var videoId = this.getAttribute('data-video-id');
+document.addEventListener('DOMContentLoaded', function() {
+    var modal = document.getElementById('videoModal');
+    var iframe = document.getElementById('videoFrame');
+    var closeBtn = document.getElementsByClassName('close')[0];
+    var watchTrailerButtons = document.getElementsByClassName('watch-trailer');
 
-        // Toggle the display of the video container
-        if (videoContainer.style.display === 'none' || videoContainer.style.display === '') {
-            videoContainer.style.display = 'block';
-            iframe.src = 'https://www.youtube.com/embed/' + videoId;
-        } else {
-            videoContainer.style.display = 'none';
-            iframe.src = '';
+    // Open modal with the correct video
+    Array.from(watchTrailerButtons).forEach(function(btn) {
+        btn.addEventListener('click', function(event) {
+            event.preventDefault();
+            var videoId = btn.getAttribute('data-video-id');
+            iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
+            modal.style.display = 'flex'; // Show the modal
+        });
+    });
+
+    // Close modal
+    closeBtn.addEventListener('click', function() {
+        modal.style.display = 'none'; // Hide the modal
+        iframe.src = ''; // Stop the video
+    });
+
+    // Close modal if user clicks outside of modal content
+    window.addEventListener('click', function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none'; // Hide the modal
+            iframe.src = ''; // Stop the video
         }
     });
 });
