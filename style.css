@@ -600,7 +600,7 @@ footer{
         flex-direction: column;
     }
 
-   .sign-left, .sign-right {
+  .sign-left, .sign-right {
         margin-top: -80px;
          margin-left: 250px;
     } 
@@ -608,6 +608,24 @@ footer{
     width: 60%;
     height: 150px;
      transform: translateY(-18px);
+    }
+    
+    .slide img {
+    width: 100%;
+    height: 220px;
+    display: block;
+    border-radius: 50px 20px;
+        
+        }
+.card img{
+  
+  margin-block: 2px;
+  width: 150px;
+    }
+    
+    .container .card {
+    display: flex;
+    margin-top: 11px;
     }
 
     .text-container p {
