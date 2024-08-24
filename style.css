@@ -431,6 +431,7 @@ footer{
     background-color: #000;
     padding: 20px;
     text-align: center;
+    border-radius: 5px;
 }
 .footerBottom p{
     color: white;
