@@ -851,3 +851,30 @@ footer{
             text-align: center;
             margin-right: 150px;
 	}
+.premiere {
+    padding: 10px;
+    text-align: center;
+}
+
+.containers {
+    width: 100%;
+}
+
+.card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Adjust the gap between items */
+    justify-content: center;
+}
+
+.image-wrapper {
+    position: relative;
+    width: calc(50% - 10px); /* Two items per row, accounting for the gap */
+    box-sizing: border-box;
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
