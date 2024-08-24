@@ -784,7 +784,7 @@ footer{
 }
 @media (max-width: 768px) {
     .btn {
-        width: 100%; /* Full width on mobile for easier clicking */
+        width: 30%; /* Full width on mobile for easier clicking */
         box-sizing: border-box; /* Ensure padding and border are included in width */
     }
 
@@ -795,7 +795,7 @@ footer{
 
     .header .sign-nav, .header .sign-left, .header .sign-right {
         align-items: center; /* Center items vertically */
-	margin-right: 26px;
+	    margin-right: 26px;
     }
 
     .btn-container {
@@ -826,3 +826,28 @@ footer{
     text-align: center; /* Center align text and elements in container */
 }
 
+        .my-image-class {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cover the area without stretching */
+        }
+        .poster:hover{
+            transform: scale(1.3);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+        }
+
+        /* Show overlay on hover */
+        .image-wrapper:hover .overlay {
+            opacity: 1;
+        }
+
+        /* Button styles */
+        .btn {
+            text-align: center;
+            margin-right: 150px;
+	}
