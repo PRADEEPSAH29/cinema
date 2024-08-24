@@ -651,7 +651,7 @@ footer{
     }
 
     .card {
-        flex-direction: column;
+        flex-direction: row;
     }
 
     .image-wrapper {
