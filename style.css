@@ -540,4 +540,75 @@ footer{
         .btn:focus {
             outline: none; /* Remove outline on focus */
         }
-}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.8); /* Black background with opacity */
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: 15% auto; /* Center modal */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 800px;
+  }
+  
+  /* Border Text */
+  .border-text {
+    position: absolute;
+    top: -20px; /* Adjust position as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    background: white; /* Background color same as modal-content to cover the border */
+    padding: 0 10px; /* Space around text */
+    font-family: 'Pacifico', cursive; /* Apply the stylish font */
+    font-size: 20px; /* Adjust font size as needed */
+    color: #333; /* Text color */
+    text-align: center;
+  }
+  
+  /* Close Button */
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* Video Container */
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    background: #000;
+  }
+  
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
