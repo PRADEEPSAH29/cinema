@@ -44,7 +44,28 @@ body {
     font-size: 18px; /* Font size for the text */
     font-weight: bold;
     color: #fff;
-    }   
+}
+.container {
+    text-align: center;
+    padding: 20px;
+}
+
+.movie-item {
+    position: relative;
+    display: inline-block;
+
+}
+
+.movie-item:hover .poster {
+    transform: scale(1.05);
+
+}
+
+.movie-item:hover .overlay {
+    opacity: 1;
+
+}
+
 
 .fnav{
     margin: 5px;
