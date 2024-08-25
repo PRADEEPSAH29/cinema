@@ -227,6 +227,10 @@ body {
     margin-inline: 22px;
     font-size: 22px;
 }
+.poster {
+    display: block;
+    transition: transform 0.3s ease;
+}
 
 .sec-nav {
     display: flex; /* Change from inline-block to flex for better layout control */
