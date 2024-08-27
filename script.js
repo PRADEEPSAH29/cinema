@@ -171,3 +171,27 @@ document.querySelectorAll('.modal .close').forEach(span => {
         iframe.src = ''; // Stop video playback when modal is closed
     });
 });
+//system 
+// redirect.js
+
+// Function to check if the user is logged in
+function isLoggedIn() {
+    // Example check: replace with your actual login check logic
+    return !!localStorage.getItem('userToken');
+}
+
+// Function to redirect the user based on their login status
+function redirectToPage() {
+    const bookingPageUrl = 'https://pradeepsah29.github.io/cinema1'; // URL of the booking page
+    const loginPageUrl = 'https://inicinemas.com/CineLogin.aspx'; // URL of the login page
+
+    if (isLoggedIn()) {
+        window.location.href = bookingPageUrl;
+    } else {
+        window.location.href = loginPageUrl;
+    }
+}
+
+// Execute the redirection
+redirectToPage();
+
