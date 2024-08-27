@@ -74,3 +74,100 @@ function showSlides() {
 setInterval(function() {
     plusSlides(1);
 }, 3000); // Change slide every 5 seconds
+// Function to filter movies based on search input
+function filterMovies() {
+    const query = document.getElementById('searchInput').value.toLowerCase();
+    const dropdown = document.getElementById('dropdown');
+    const categories = document.querySelectorAll('.movie-item');
+
+    dropdown.innerHTML = ''; // Clear previous results
+    let hasResults = false;
+
+    categories.forEach(movie => {
+        const title = movie.getAttribute('data-title') ? movie.getAttribute('data-title').toLowerCase() : '';
+        if (title.includes(query) && query.trim() !== '') {
+            const item = document.createElement('div');
+            item.classList.add('movie-item');
+            item.style.display = 'flex';
+            item.style.color = 'black';
+
+            const img = movie.querySelector('img');
+            if (img) {
+                const clonedImg = img.cloneNode(true);
+                clonedImg.style.width = '60px';
+                clonedImg.style.height = '80px';
+                item.appendChild(clonedImg);
+            }
+
+            const titleElement = document.createElement('span');
+            titleElement.textContent = movie.getAttribute('data-title');
+            item.appendChild(titleElement);
+
+            item.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevent default action
+                showSelectedMovie(movie);
+            });
+
+            dropdown.appendChild(item);
+            hasResults = true;
+        }
+    });
+
+    dropdown.style.display = hasResults ? 'block' : 'none';
+}
+
+// Function to show only the selected movie and hide all others
+function showSelectedMovie(selectedMovie) {
+    const allMovies = document.querySelectorAll('.movie-item');
+    
+    // Hide all movie items
+    allMovies.forEach(movie => {
+        movie.style.display = 'none';
+    });
+
+    // Show the selected movie
+    selectedMovie.style.display = 'block';
+
+    // Scroll to the selected movie
+    selectedMovie.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+// Event listener for search input
+document.getElementById('searchInput').addEventListener('input', function() {
+    filterMovies();
+});
+
+// Event listener to hide dropdown when clicking outside of it
+document.addEventListener('click', function(event) {
+    if (!document.querySelector('.search-container').contains(event.target)) {
+        document.getElementById('dropdown').style.display = 'none';
+    }
+});
+
+// Function to open the modal and play video
+function openModal(videoId, modalId) {
+    const modal = document.getElementById(modalId);
+    const iframe = modal.querySelector('iframe');
+    modal.style.display = 'flex';
+    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+}
+
+// Event listeners for watch trailer buttons
+document.querySelectorAll('.watch-trailer').forEach(button => {
+    button.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default link behavior
+        const videoId = this.getAttribute('data-video-id');
+        const modalId = this.getAttribute('data-modal-id');
+        openModal(videoId, modalId);
+    });
+});
+
+// Event listeners for closing modals
+document.querySelectorAll('.modal .close').forEach(span => {
+    span.addEventListener('click', function() {
+        const modal = this.closest('.modal');
+        const iframe = modal.querySelector('iframe');
+        modal.style.display = 'none';
+        iframe.src = ''; // Stop video playback when modal is closed
+    });
+});
