@@ -180,16 +180,28 @@ function isLoggedIn() {
     return !!localStorage.getItem('userToken');
 }
 
-// Function to redirect the user based on their login status
-function redirectToPage() {
+// Function to handle the click event on the "Book Now" button
+function handleBookNowClick(event) {
+    event.preventDefault(); // Prevent the default link behavior
+
     const bookingPageUrl = 'https://pradeepsah29.github.io/cinema1'; // URL of the booking page
-    const loginPageUrl = 'https://inicinemas.com/CineLogin.aspx'; // URL of the login page
+    const loginPageUrl = '/login'; // URL of the login page
 
     if (isLoggedIn()) {
         window.location.href = bookingPageUrl;
     } else {
         window.location.href = loginPageUrl;
     }
+}
+
+// Add event listener to the "Book Now" button
+document.addEventListener('DOMContentLoaded', () => {
+    const bookNowBtn = document.getElementById('bookNowBtn');
+    if (bookNowBtn) {
+        bookNowBtn.addEventListener('click', handleBookNowClick);
+    }
+});
+
 }
 
 // Execute the redirection
