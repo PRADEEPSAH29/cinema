@@ -171,7 +171,6 @@ document.querySelectorAll('.modal .close').forEach(span => {
         iframe.src = ''; // Stop video playback when modal is closed
     });
 });
-//system 
 // redirect.js
 
 // Function to check if the user is logged in
@@ -201,9 +200,3 @@ document.addEventListener('DOMContentLoaded', () => {
         bookNowBtn.addEventListener('click', handleBookNowClick);
     }
 });
-
-}
-
-// Execute the redirection
-redirectToPage();
-
