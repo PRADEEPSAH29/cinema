@@ -15,9 +15,10 @@
         <div class="left"> 
         	<div class="logo"> </div>
           <img src="https://i.ibb.co/L6wD9jQ/Picsart-24-08-15-13-52-49-077.png" alt="">
-          <input type="text" placeholder="Search for Movies">
-          <div class="button">
-          <button type="submit">GO</button>
+          <input type="text" id="searchInput" placeholder="Search for Movies" class="search-bar">      
+                 <div id="dropdown" class="dropdown"></div>             
+                 <div class="button">              
+                <button id="searchButton">GO</button>
             </div>
         </div>
 
@@ -73,48 +74,57 @@
     <script src="script.js"></script>
    
    
-   <div class="container">
-    <h2>Recommended Movies</h2>
-    <div class="card">
-        <div class="movie-item">
-            <img src="https://i.ibb.co/tzqDtN1/449440360-1017438046608098-6026892916925831006-n.jpg" width="380" height="550" alt="Movie 1" class="poster">
-            <div class="overlay">
-                <a href="#" class="btn watch-trailer" data-video-id="bO3y04aphdk" data-modal-id="modal1">Watch Trailer</a>
-                <a href="https://www.thefilmnepal.com/movie/bulaki" class="btn">Details</a>
-            </div>
-		<div class="modal" id="modal1">
-                        <div class="modal-content">
-                            <span class="close">&times;</span>
-                            <div class="border-text">WELCOME TO JANAKPUR CINEMA</div>
-                            <div class="video-container">
-                                <iframe id="videoFrame1" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                            </div>
+    <div class="container">
+        <h2>Recommended Movies</h2>
+        <div class="card">
+            <!-- Movie Item 1 -->
+            <div class="movie-item" data-title="bulaki">
+                <img src="https://i.ibb.co/tzqDtN1/449440360-1017438046608098-6026892916925831006-n.jpg" width="380" height="550" alt="bulaki" class="poster">
+                <div class="overlay">
+                    <a href="#" class="btn watch-trailer" data-video-id="bO3y04aphdk" data-modal-id="modal1">Watch Trailer</a>
+                    <a href="https://www.thefilmnepal.com/movie/bulaki" class="btn">Details</a>
+                </div>
+                <!-- Modal for Movie 1 -->
+                <div class="modal" id="modal1">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <div class="border-text">WELCOME TO JANAKPUR CINEMA</div>
+                        <div class="video-container">
+                            <iframe id="videoFrame1" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                     </div>
-        </div>
-        <div class="movie-item">
-            <img src="https://i.ibb.co/RQGzSLp/outlawdafa-219.jpg" width="380" height="550" alt="Movie 2" class="poster">
-            <div class="overlay">
-                <a href="#" class="btn watch-trailer" data-video-id="FzpUygc6T-A" data-modal-id="modal1">Watch Trailer</a>
-                <a href="https://www.thefilmnepal.com/movie/outlawdafa-219" class="btn">Details</a>
+                </div>
             </div>
-        </div>
-        <div class="movie-item">
-            <img src="https://i.ibb.co/4frfDCy/Rawayan-310x390-760674.png" width="380" height="550" alt="Movie 3" class="poster">
-            <div class="overlay">
-                <a href="#" class="btn watch-trailer" data-video-id="A6TypcUi6QE" data-modal-id="modal1">Watch Trailer</a>
-                <a href="https://www.thefilmnepal.com/movie/rawayan" class="btn">Details</a>
+            
+            <!-- Movie Item 2 -->
+            <div class="movie-item" data-title="outlawdafa-219">
+                <img src="https://i.ibb.co/RQGzSLp/outlawdafa-219.jpg" width="380" height="550" alt="Movie 2" class="poster">
+                <div class="overlay">
+                    <a href="#" class="btn watch-trailer" data-video-id="FzpUygc6T-A" data-modal-id="modal1">Watch Trailer</a>
+                    <a href="https://www.thefilmnepal.com/movie/outlawdafa-219" class="btn">Details</a>
+                </div>
             </div>
-        </div>
-        <div class="movie-item">
-            <img src="https://i.ibb.co/82vVTxw/444903579-427557473468285-3189673081526160503-n.jpg" width="380" height="550" alt="Movie 4" class="poster">
-            <div class="overlay">
-                <a href="#" class="btn watch-trailer" data-video-id="c4UmTfIx_nI" data-modal-id="modal1">Watch Trailer</a>
-                <a href="https://www.thefilmnepal.com/movie/hrashwo-deergha" class="btn">Details</a>
+            
+            <!-- Movie Item 3 -->
+            <div class="movie-item" data-title="rawayan">
+                <img src="https://i.ibb.co/4frfDCy/Rawayan-310x390-760674.png" width="380" height="550" alt="Movie 3" class="poster">
+                <div class="overlay">
+                    <a href="#" class="btn watch-trailer" data-video-id="A6TypcUi6QE" data-modal-id="modal1">Watch Trailer</a>
+                    <a href="https://www.thefilmnepal.com/movie/rawayan" class="btn">Details</a>
+                </div>
+            </div>
+            
+            <!-- Movie Item 4 -->
+            <div class="movie-item" data-title="hrashwo-deergha">
+                <img src="https://i.ibb.co/82vVTxw/444903579-427557473468285-3189673081526160503-n.jpg" width="380" height="550" alt="Movie 4" class="poster">
+                <div class="overlay">
+                    <a href="#" class="btn watch-trailer" data-video-id="c4UmTfIx_nI" data-modal-id="modal1">Watch Trailer</a>
+                    <a href="https://www.thefilmnepal.com/movie/hrashwo-deergha" class="btn">Details</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
+    
 
     
     
@@ -136,14 +146,16 @@
             <div class="card">
                 <!-- Wrapper for each image with overlay -->
                 <!-- Image Wrapper -->
+                <div class="movie-item" data-title="ghampani">
                 <div class="image-wrapper" id="wrapper1">
                     <a href="https://pradeepsah29.github.io/cinema1/" target="_blank">
-                        <img src="https://i.postimg.cc/dVgxRwvq/tumblr-oliful-Yy-PQ1soz9p3o3-1280.jpg" alt="Cinema Image" class="my-image-class">
+                        <img src="https://i.postimg.cc/dVgxRwvq/tumblr-oliful-Yy-PQ1soz9p3o3-1280.jpg" alt="" class="my-image-class">
                     </a>
                     <div class="overlay">
                         <a href="https://pradeepsah29.github.io/cinema1" class="btn">Book Now</a>
                         <a href="#" class="btn watch-trailer" data-video-id="O2L8kqUdZ58" data-modal-id="modal1">Watch Trailer</a>
                     </div>
+                </div>
                     <!-- Modal for Video -->
                     <div class="modal" id="modal1">
                         <div class="modal-content">
@@ -155,13 +167,14 @@
                         </div>
                     </div>
                 </div>
-    
+                <div class="movie-item" data-title="kalki">
                 <div class="image-wrapper" id="wrapper2">
                     <img src="https://i.postimg.cc/JnzZGHgt/GDn05-CVb-YAAXW8m.jpg" alt="" class="my-image-class">
                     <div class="overlay">
                         <a href="https://pradeepsah29.github.io/cinema1" class="btn">Book Now</a>
                         <a href="#" class="btn watch-trailer" data-video-id="aninoDcPWo4" data-modal-id="modal2">Watch Trailer</a>
                     </div>
+                </div>
                     <!-- Modal for Video -->
                     <div class="modal" id="modal2">
                         <div class="modal-content">
@@ -173,13 +186,14 @@
                         </div>
                     </div>
                 </div>
-    
+                <div class="movie-item" data-title="Stree 2">
                 <div class="image-wrapper" id="wrapper3">
                     <img src="https://i.postimg.cc/3xhB3NK0/Image-2-Maddock-Films-66b9e9b365053.webp" alt="" class="my-image-class">
                     <div class="overlay">
                         <a href="https://pradeepsah29.github.io/cinema1" class="btn">Book Now</a>
                         <a href="#" class="btn watch-trailer" data-video-id="KVnheXywIbY" data-modal-id="modal3">Watch Trailer</a>
                     </div>
+                </div>
                     <!-- Modal for Video -->
                     <div class="modal" id="modal3">
                         <div class="modal-content">
@@ -191,12 +205,13 @@
                         </div>
                     </div>
                 </div>
-    
+                <div class="movie-item" data-title="sushree">
                 <div class="image-wrapper" id="wrapper4">
                     <img src="https://i.postimg.cc/brMB6hbH/f1bd38ad0bc228676a691e7247303e8f.jpg" alt="" class="my-image-class">
                     <div class="overlay">
                         <a href="https://pradeepsah29.github.io/cinema1" class="btn">Book Now</a>
                         <a href="#" class="btn watch-trailer" data-video-id="NDlqkCSkUQQ" data-modal-id="modal4">Watch Trailer</a>
+                    </div>
                     </div>
                     <!-- Modal for Video -->
                     <div class="modal" id="modal4">
@@ -215,28 +230,28 @@
    <div class="container">
     <h2>Upcoming Movies</h2>
     <div class="card">
-        <div class="movie-item">
+        <div class="movie-item" data-title="satidevi">
             <img src="https://i.postimg.cc/0NcZW94S/unnamed.png" alt="Movie 1" width="380" height="550" class="poster">
             <div class="overlay">
                 <a href="#" class="btn watch-trailer" data-video-id="CCa-VZobOWU" data-modal-id="modal1">Watch Trailer</a>
                 <a href="https://www.thefilmnepal.com/movie/satidevi" class="btn">Details</a>
             </div>
         </div>
-        <div class="movie-item">
+        <div class="movie-item" data-title="nametine-ghau">
             <img src="https://i.postimg.cc/DfgppkWn/Untitled-1-442489.png" alt="Movie 2" width="380" height="550" class="poster">
             <div class="overlay">
                 <a href="#" class="btn watch-trailer" data-video-id="EQd5feiU1BQ" data-modal-id="modal1">Watch Trailer</a>
                 <a href="https://www.thefilmnepal.com/movie/nametine-ghau" class="btn">Details</a>
             </div>
         </div>
-        <div class="movie-item">
+        <div class="movie-item" data-title="devi">
             <img src="https://i.postimg.cc/dtDccmT7/devi.webp" alt="Movie 3" width="380" height="550" class="poster">
             <div class="overlay">
                 <a href="#" class="btn watch-trailer" data-video-id="jcO53FtHCI0" data-modal-id="modal1">Watch Trailer</a>
                 <a href="https://www.thefilmnepal.com/movie/devi-2" class="btn">Details</a>
             </div>
         </div>
-        <div class="movie-item">
+        <div class="movie-item" data-title="">
             <img src="https://i.postimg.cc/Xq7xgn8q/outlawdafa-219.jpg" alt="Movie 4" width="380" height="550" class="poster">
             <div class="overlay">
                 <a href="#" class="btn watch-trailer" data-video-id="FzpUygc6T-A" data-modal-id="modal1">Watch Trailer</a>
