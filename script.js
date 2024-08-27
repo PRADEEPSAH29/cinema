@@ -185,7 +185,7 @@ function handleBookNowClick(event) {
     event.preventDefault(); // Prevent the default link behavior
 
     const bookingPageUrl = 'https://pradeepsah29.github.io/cinema1'; // URL of the booking page
-    const loginPageUrl = '/login'; // URL of the login page
+    const loginPageUrl = 'https://inicinemas.com/CineLogin.aspx'; // URL of the login page
 
     if (isLoggedIn()) {
         window.location.href = bookingPageUrl;
