@@ -51,16 +51,22 @@
 
  <div class="slider">
         <div class="slides">
-            <div class="slide fade">
-                <!-- Wrap the image with an anchor tag to trigger the video in an iframe -->
+            <div class="slide">
+                <div class="video-container">
+                    <iframe id="videoFrame" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <button onclick="closeVideo()">Close Video</button>
+                </div>
                 <a href="javascript:void(0);" onclick="openVideo('https://www.youtube.com/embed/dg2gnLxUdr4', this)">
-                    <img src="https://i.postimg.cc/hG5BMd6p/Black-and-White-Modern-Sports-Football-Event-Banner-2.png" height="450" width="100%" alt="Slide Image">
+                    <img src="https://i.postimg.cc/hG5BMd6p/Black-and-White-Modern-Sports-Football-Event-Banner-2.png" alt="Slide Image">
                 </a>
             </div>
-            <div class="slide fade">
-                <!-- Wrap the image with an anchor tag to trigger the video in an iframe -->
+            <div class="slide">
+                <div class="video-container">
+                    <iframe id="videoFrame" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <button onclick="closeVideo()">Close Video</button>
+                </div>
                 <a href="javascript:void(0);" onclick="openVideo('https://www.youtube.com/embed/Jv3HndBZuJM', this)">
-                    <img src="https://i.postimg.cc/ZYgyn2gW/maxresdefault.jpg" height="450" width="100%" alt="Slide Image">
+                    <img src="https://i.postimg.cc/ZYgyn2gW/maxresdefault.jpg" alt="Slide Image">
                 </a>
             </div>
         </div>
@@ -70,14 +76,7 @@
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
 
-    <!-- Video container to display the YouTube video in the same page -->
-    <div id="videoContainer">
-        <iframe id="videoFrame" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <button onclick="closeVideo()">Close Video</button>
-    </div>
-
     <script>
-        // Current slide index
         let slideIndex = 0;
 
         // Function to show slides
@@ -90,39 +89,43 @@
             slidesContainer.style.transform = `translateX(-${slideIndex * 100}%)`;
         }
 
-        // Function to move slides
+        // Function to navigate slides
         function plusSlides(n) {
             slideIndex += n;
             showSlides();
         }
 
-        // Function to open the YouTube video in the iframe
+        // Function to open the YouTube video in the iframe (and hide the image)
         function openVideo(videoUrl, element) {
-            // Show the iframe container
-            document.getElementById('videoContainer').style.display = 'block';
+            let parentDiv = element.closest('.slide');
+            let image = parentDiv.querySelector('img');
+            let videoContainer = parentDiv.querySelector('.video-container');
+            
+            // Hide the image
+            image.style.display = 'none';
+
+            // Show the video container and iframe
+            videoContainer.style.display = 'block';
             
             // Set the iframe src to the video URL
-            document.getElementById('videoFrame').src = videoUrl;
-
-            // Optionally, hide the image once clicked and show the video in the same place
-            var parentDiv = element.closest('.slide');
-            var image = parentDiv.querySelector('img');
-            image.style.display = 'none';
+            parentDiv.querySelector('#videoFrame').src = videoUrl;
         }
 
         // Function to close the video (hide the iframe container and show the image again)
         function closeVideo() {
-            // Hide the iframe container
-            document.getElementById('videoContainer').style.display = 'none';
-            
-            // Stop the video by removing the iframe src
-            document.getElementById('videoFrame').src = '';
+            // Find the current slide and video container
+            let currentSlide = document.querySelector('.slide:nth-child(' + (slideIndex + 1) + ')');
+            let videoContainer = currentSlide.querySelector('.video-container');
+            let image = currentSlide.querySelector('img');
 
-            // Show all the images again (you can also choose to hide all or just the current one)
-            var images = document.querySelectorAll('.slide img');
-            images.forEach(function(image) {
-                image.style.display = 'block';
-            });
+            // Hide the video container
+            videoContainer.style.display = 'none';
+
+            // Stop the video by removing the iframe src
+            currentSlide.querySelector('#videoFrame').src = '';
+
+            // Show the image again
+            image.style.display = 'block';
         }
 
         // Initialize the slider
