@@ -1,59 +1,3 @@
-<?php
-session_start();
-
-// Check if the user is logged in
-$isLoggedIn = isset($_SESSION['user']); // Set to true if user is logged in
-
-// Initialize the username variable
-$username = $isLoggedIn ? $_SESSION['user']['username'] : 'Guest'; // Default to 'Guest' if not logged in
-
-// Database connection
-$host = 'localhost';
-$dbname = 'janakpur_cinema';
-$user = 'root';
-$pass = '';
-
-try {
-    $conn = new PDO("mysql:host=$host;dbname=$dbname", $user, $pass);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    // Fetch slides
-    $stmt = $conn->query("SELECT image_url FROM slides");
-    $slides = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        // Fetch upcoming movies
-        $stmt = $conn->prepare("SELECT * FROM upcoming_movies ORDER BY id ASC"); // Assuming you want to order by id or another column
-        $stmt->execute();
-        $upcoming_movies = $stmt->fetchAll(PDO::FETCH_ASSOC); // Use fetchAll with PDO
-    } catch (PDOException $e) {
-        echo "Connection failed: " . $e->getMessage();
-        exit(); // Exit on error
-    }
-    
-
-// Handle logout if the logout request is made 
-if (isset($_GET['action']) && $_GET['action'] === 'logout') {
-    // Unset all session variables
-    $_SESSION = [];
-
-    // If you want to delete the session cookie
-    if (ini_get("session.use_cookies")) {
-        $params = session_get_cookie_params();
-        setcookie(session_name(), '', time() - 42000,
-            $params["path"], $params["domain"], $params["secure"], $params["httponly"]
-        );
-    }
-
-    // Destroy the session
-    session_destroy();
-
-    // Redirect to login page
-    header('Location: login.php?logout=success');
-    exit();
-}
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,169 +13,83 @@ if (isset($_GET['action']) && $_GET['action'] === 'logout') {
 <body>
     <nav class="fnav">
         <div class="left"> 
-            <div class="logo"></div>
-            <img src="https://i.ibb.co/L6wD9jQ/Picsart-24-08-15-13-52-49-077.png" alt="">
-            <input type="text" id="searchInput" placeholder="Search for Movies" class="search-bar">      
-            <div id="dropdown" class="dropdown"></div>             
-            <div class="button">              
-                <button id="searchButton">GO</button>
+        	<div class="logo"> </div>
+          <img src="https://i.ibb.co/L6wD9jQ/Picsart-24-08-15-13-52-49-077.png" alt="">
+          <input type="text" placeholder="Search for Movies">
+          <div class="button">
+          <button type="submit">GO</button>
             </div>
         </div>
 
-        <header class="header">
-            <nav class="sign-nav">
-                <div class="sign-left">
-                <?php if ($isLoggedIn): ?>
-    <div class="text-container">
-        <h1>Welcome, <?php echo htmlspecialchars($username); ?>!</h1>
-    </div>
-    <div class="button-container">
-        <form method="post" action="my_tickets.php">
-            <button type="submit" class="btn white-btn" name="my_tickets">My Tickets</button>
-        </form>
-    </div>
-    <div class="button-container">
-        <form method="post" action="logout.php">
-            <button type="submit" class="btn white-btn" name="logout">LOG OUT</button>
-        </form>
-    </div>
-<?php else: ?>
-    <div class="text-container">
-        <h1>Please log in.</h1>
-    </div>
-    <div class="button-container" style="margin-bottom: 2px;">
-        <a href="login.php" class="btn white-btn">LOG IN</a>
-    </div>
-<?php endif; ?>
-
+      <header class="header">
+        <nav class="sign-nav">
+            <div class="sign-left">
+             <div class="text-container">
                 </div>
-            </nav>
-        </header>
+                 <div class="button-container">
+                <button class="btn white-btn" id="registerBtn" onclick="register()"><a href="received_1193103895449337.mp4" style=" text-decoration: none;">LOG IN</a></button>
+                <i class="fa-solid fa-bars"></i>
+                </header>
+                
+        </div>
     </nav>
+</nav>
 
     <nav class="sec-nav">
         <div class="s-left">
-            <a href="https://pradeepsah29.github.io/cinema" style="text-decoration: none;"><i class="fa fa-home"></i> HOME</a>
+        <a href="#" style="text-decoration: none;"><i class="fa fa-home"></i> HOME</a>
+        </p>
             <a href="#" style="text-decoration: none;">MOVIE</a>
-            <a href="#" style="text-decoration: none;">TICKET RATE</a>
+          <p>
+  <a href="#" style="text-decoration: none;">TICKET RATE</a>
+</p>
+
+
         </div>
     </nav>
 
-    <!-- Add message for logout success -->
-    <?php if (isset($_GET['logout']) && $_GET['logout'] === 'success'): ?>
-        <div class="logout-message">
-            <p>You have successfully logged out.</p>
-        </div>
-    <?php endif; ?>
-
-
-
-    <?php
-// Define the slides array with image and video URLs
-$slides = [
-    [
-        'image_url' => 'https://i.postimg.cc/hG5BMd6p/Black-and-White-Modern-Sports-Football-Event-Banner-2.png',
-        'video_url' => 'https://www.youtube.com/embed/dg2gnLxUdr4'  // YouTube embed URL
-    ],
-];
-?>
-
-<div class="slider">
-    <div class="slides">
-        <?php foreach ($slides as $slide): ?>
+    <div class="slider"> 
+        <div class="slides">
             <div class="slide fade">
-                <!-- Wrap the image with an anchor tag to trigger the video in an iframe -->
-                <a href="javascript:void(0);" onclick="openVideo('<?php echo $slide['video_url']; ?>', this)">
-                    <img src="<?php echo $slide['image_url']; ?>" height="450" width="100%" alt="Slide Image">
-                </a>
+                <img src="https://i.postimg.cc/9MqTCFhR/Bulaki-1920x660-698449.png" height="450" width="100%" alt="Image 1">
             </div>
-        <?php endforeach; ?>
+            <div class="slide fade">
+                <img src="https://i.postimg.cc/RVTtMDjR/KKM-1920x660-895009.png" height="450" width="100%" alt="Image 2">
+            </div>
+            <div class="slide fade">
+                <img src="https://i.postimg.cc/0Q6QqMPD/Ghar-Juwai-1920x660-114524.png" height="450" width="100%" alt="Image 3">
+            </div>
+            <div class="slide fade">
+                <img src="https://i.postimg.cc/tJxYF1cp/Stree2-1920x660-803390.png" height="450" width="100%" alt="Image 4">
+            </div>
+            <div class="slide fade">
+                <img src="https://i.postimg.cc/y8HtWqgB/Vedaa-1920x660-516100.png" height="450" width="100%" alt="Image 5">
+            </div>
+        </div>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
-
-    <!-- Create an iframe container to display the YouTube video in the same page -->
-    <div id="videoContainer" style="display:none; text-align:center;">
-        <iframe id="videoFrame" style="width:100%; height:450px;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <button onclick="closeVideo()">Close Video</button>
-    </div>
-
-    <!-- Navigation buttons -->
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)">&#10095;</a>
-</div>
-
-<script>
-    // Function to open the YouTube video in the iframe
-    function openVideo(videoUrl, element) {
-        // Show the iframe container
-        document.getElementById('videoContainer').style.display = 'block';
-        
-        // Set the iframe src to the video URL
-        document.getElementById('videoFrame').src = videoUrl;
-
-        // Optionally, hide the image once clicked and show the video in the same place
-        var parentDiv = element.closest('.slide');
-        var image = parentDiv.querySelector('img');
-        image.style.display = 'none';
-    }
-
-    // Function to close the video (hide the iframe container and show the image again)
-    function closeVideo() {
-        // Hide the iframe container
-        document.getElementById('videoContainer').style.display = 'none';
-        
-        // Stop the video by removing the iframe src
-        document.getElementById('videoFrame').src = '';
-
-        // Show all the images again (you can also choose to hide all or just the current one)
-        var images = document.querySelectorAll('.slide img');
-        images.forEach(function(image) {
-            image.style.display = 'block';
-        });
-    }
-</script>
-
+    
     <script src="script.js"></script>
+   
    
     <div class="container">
         <h2>Recommended Movies</h2>
         <div class="card">
-            <!-- Movie Item 1 -->
-            <div class="movie-item" data-title="bulaki">
-                <img src="https://i.ibb.co/tzqDtN1/449440360-1017438046608098-6026892916925831006-n.jpg" width="380" height="550" alt="bulaki" class="poster">
-                <div class="overlay">
-                    <a href="#" class="btn watch-trailer" data-video-id="bO3y04aphdk" data-modal-id="modal1">Watch Trailer</a>
-                    <a href="https://www.thefilmnepal.com/movie/bulaki" class="btn">Details</a>
-                </div>
-            </div>
-            <!-- Movie Item 2 -->
-            <div class="movie-item" data-title="outlawdafa-219">
-                <img src="https://i.ibb.co/RQGzSLp/outlawdafa-219.jpg" width="380" height="550" alt="Movie 2" class="poster">
-                <div class="overlay">
-                    <a href="#" class="btn watch-trailer" data-video-id="FzpUygc6T-A" data-modal-id="modal1">Watch Trailer</a>
-                    <a href="https://www.thefilmnepal.com/movie/outlawdafa-219" class="btn">Details</a>
-                </div>
-            </div>
-            <!-- Movie Item 3 -->
-            <div class="movie-item" data-title="rawayan">
-                <img src="https://i.ibb.co/4frfDCy/Rawayan-310x390-760674.png" width="380" height="550" alt="Movie 3" class="poster">
-                <div class="overlay">
-                    <a href="#" class="btn watch-trailer" data-video-id="A6TypcUi6QE" data-modal-id="modal1">Watch Trailer</a>
-                    <a href="https://www.thefilmnepal.com/movie/rawayan" class="btn">Details</a>
-                </div>
-            </div>
-            <!-- Movie Item 4 -->
-            <div class="movie-item" data-title="hrashwo-deergha">
-                <img src="https://i.ibb.co/82vVTxw/444903579-427557473468285-3189673081526160503-n.jpg" width="380" height="550" alt="Movie 4" class="poster">
-                <div class="overlay">
-                    <a href="#" class="btn watch-trailer" data-video-id="c4UmTfIx_nI" data-modal-id="modal1">Watch Trailer</a>
-                    <a href="https://www.thefilmnepal.com/movie/hrashwo-deergha" class="btn">Details</a>
-                </div>
-            </div>
+            <img src="https://i.ibb.co/tzqDtN1/449440360-1017438046608098-6026892916925831006-n.jpg" width="380" height="550"  alt="">
+            <img src="https://i.ibb.co/RQGzSLp/outlawdafa-219.jpg" width="380" height="550"  alt="">
+            <img src="https://i.ibb.co/X7ZhDLV/P-HO00011309.jpg" width="380" height="550"  alt="">
+            <img src="https://i.ibb.co/4frfDCy/Rawayan-310x390-760674.png" width="380" height="550" alt="">
+            <img src="https://i.ibb.co/82vVTxw/444903579-427557473468285-3189673081526160503-n.jpg"  width="380" height="550" alt="">
+ 
         </div>
     </div>
+    
+    
+    
 
     <div class="banner"> 
-    <img src="https://i.postimg.cc/Lsq0y2hh/voucherbanner.jpg" alt="voucherbanner" height="180" width="100%" alt=">
+    <img src="https://i.ibb.co/pywW3Yw/voucherbanner.jpg" alt="voucherbanner" height="200" width="100%" alt=">
 </div>
 
     <div class="container">
@@ -240,81 +98,40 @@ $slides = [
         </div>
     </div>
 
-    <?php include 'db.php'; ?>
-<div class="premiere">
-    <h1>Now Showing</h1>
-    <div class="containers">
-        <p>New Release Every Friday</p>
+    <div class="premiere">
+          
+            <h1>Now Showing</h1>
+         
+
+         <div class="containers">
+            <p>New Release Every Friday</p>
+            <div class="card">
+                <a href="https://pradeepsah29.github.io/cinema1/" target="_blank">
+    <img src="https://i.postimg.cc/dVgxRwvq/tumblr-oliful-Yy-PQ1soz9p3o3-1280.jpg" width="380" height="550" alt="Cinema Image">
+</a>
+
+                <img src="https://i.postimg.cc/JnzZGHgt/GDn05-CVb-YAAXW8m.jpg" width="380" height="550" alt="">
+                <img src="https://i.postimg.cc/3xhB3NK0/Image-2-Maddock-Films-66b9e9b365053.webp" width="380" height="550" alt="">
+                <img src="https://i.postimg.cc/brMB6hbH/f1bd38ad0bc228676a691e7247303e8f.jpg" width="380" height="550" alt="">
+                <img src="https://i.postimg.cc/pLyDWFwT/MV5-BNz-Vk-MGQ0-MDAt-Yz-Fm-ZS00-YTBk-LTli-ZWEt-Mz-U5-YTYz-Y2-Zk-ZTAw-Xk-Ey-Xk-Fqc-Gde-QXVy-NTEw-OTEz-NDk-V1.jpg" width="380" height="550" alt="">
+                 
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="container">
+        <h2>Upcoming Movies</h2>
         <div class="card">
-            <?php 
-            $movies = [];
-            $stmt = $conn->prepare("SELECT * FROM movies");
-            $stmt->execute();
-
-            // Fetch all movies
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $movies[] = $row;
-            }
-
-            foreach ($movies as $movie) {
-                $videoId = isset($movie['videoId']) ? $movie['videoId'] : 'defaultVideoId'; // Use a default value if missing
-                $trailerUrl = isset($movie['trailer_url']) ? $movie['trailer_url'] : ''; // Get trailer URL
-
-                echo "<div class='movie-item' data-title='{$movie['title']}'>
-                    <div class='image-wrapper' id='wrapper{$movie['id']}'>
-                        <a href='https://pradeepsah29.github.io/cinema1/' target='_blank'>
-                            <img src='{$movie['img']}' alt='{$movie['title']}' class='my-image-class'>
-                        </a>
-                        <div class='overlay'>
-                            <a href='movie_detail.php?id={$movie['id']}' class='btn'>Book Now</a>
-                            <a href='#' class='btn watch-trailer' data-video-id='{$trailerUrl}' data-modal-id='modal{$movie['id']}'>Watch Trailer</a>
-                        </div>
-                    </div>
-                    <!-- Modal for Video -->
-                    <div class='modal' id='modal{$movie['id']}'>
-                        <div class='modal-content'>
-                            <span class='close'>&times;</span>
-                            <div class='border-text'>WELCOME TO JANAKPUR CINEMA</div>
-                            <div class='video-container'>
-                                <iframe id='videoFrame{$movie['id']}' src='' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
-                </div>";
-            }
-
-            $conn = null; // Close the connection
-            ?>
+            <img src="https://i.postimg.cc/mg4ZMBPC/z265hz8ubqf91.jpg" alt="">
+            <img src="https://i.postimg.cc/t7QqBH20/Animal-Movie-New-Year-Wishes-Poster.jpg" alt="">
+            <img src="https://i.postimg.cc/brMB6hbH/f1bd38ad0bc228676a691e7247303e8f.jpg" alt="">
+            <img src="https://i.postimg.cc/Xq7xgn8q/outlawdafa-219.jpg" alt="">
+            
+ 
         </div>
     </div>
-</div>
-
-<div class="container">
-    <h2>Upcoming Movies</h2>
-    <div class="card">
-        <?php foreach ($upcoming_movies as $movie): ?>
-            <div class="movie-item" data-title="<?= htmlspecialchars($movie['title']) ?>">
-                <img src="<?= htmlspecialchars($movie['poster_url']) ?>" alt="<?= htmlspecialchars($movie['title']) ?>" width="380" height="550" class="poster">
-                <div class="overlay">
-                    <a href="#" class="btn watch-trailer" data-video-id="<?= htmlspecialchars($movie['trailer_id']) ?>" data-modal-id="modal<?= $movie['id'] ?>">Watch Trailer</a>
-                    <a href="<?= htmlspecialchars($movie['details_url']) ?>" class="btn">Details</a>
-                </div>
-            </div>
-
-            <!-- Modal for Video -->
-            <div class="modal" id="modal<?= $movie['id'] ?>" style="display: none;">
-                <div class="modal-content">
-                    <span class="close" data-modal-id="modal<?= $movie['id'] ?>">&times;</span>
-                    <div class="border-text">WELCOME TO JANAKPUR CINEMA</div>
-                    <div class="video-container">
-                        <iframe id="videoFrame<?= $movie['id'] ?>" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </div>
-        <?php endforeach; ?>
-    </div>
-</div>
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <footer>
     <div class="footerContainer">
@@ -335,77 +152,30 @@ $slides = [
         </div>
         
 	
-        <footer>
-            <h4>Payment Partner</h4>
-          <ul class="footer-links payment-methods" style="list-style: none; padding: 0; margin: 0;">
-          <li>
-            <a href="https://khalti.com/payments/movie-ticket-booking/" target="_blank">
-                <img alt="Khalti Logo" src="https://i.postimg.cc/7Y8Nz6KM/Khalti-Logo-Color3-1.png" style="border: 0; height: 50px;">
-            </a>
-          
-            <a href="https://esewa.com.np/#/home" target="_blank">
-                <img alt="eSewa Logo" src="https://i.postimg.cc/FKV6W6Kz/esewa.png" style="border: 0; height: 50px;">
-            </a>
-          </li>
-          </ul>
-          
-          
-          <div class="footerBottom">
-            <p>copyright ©2024 JanakpurCinema | All rights Reserved | Designed By <span class="designer">Pradeep Sah</span></p>
-          </div>
-          </footer>
+<div class="ta-footer-title">
+    <h4 style="color: white;">Payment Partner</h4>
+</div>
+<ul class="footer-links payment-methods" style="list-style: none; padding: 0; margin: 0;">
+    <li>
+        <a href="https://khalti.com/payments/movie-ticket-booking/" target="_blank">
+            <img alt="Khalti Logo" src="https://i.postimg.cc/7Y8Nz6KM/Khalti-Logo-Color3-1.png" style="border: 0; height: 50px;">
+        </a>
+    </li>
+    <li>
+        <a href="https://esewa.com.np/#/home" target="_blank">
+            <img alt="eSewa Logo" src="https://i.postimg.cc/FKV6W6Kz/esewa.png" style="border: 0; height: 50px;">
+        </a>
+    </li>
+</ul>
 
 
-    <script>
-        // Slider functionality
-        let slideIndex = 0;
-        showSlides();
-
-        function showSlides() {
-            const slides = document.getElementsByClassName("slide");
-            for (let i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";  
-            }
-            slideIndex++;
-            if (slideIndex > slides.length) {slideIndex = 1}    
-            slides[slideIndex - 1].style.display = "block";  
-            setTimeout(showSlides, 3000); // Change image every 3 seconds
-        }
-
-        document.querySelectorAll('.watch-trailer').forEach(button => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            const videoId = this.getAttribute('data-video-id');
-            const modalId = this.getAttribute('data-modal-id');
-            const iframe = document.getElementById('videoFrame' + videoId.split('modal')[1]);
-
-            // Set the src to the trailer URL
-            iframe.src = videoId; // Assuming videoId is the trailer URL
-
-            // Show the modal
-            document.getElementById(modalId).style.display = 'block';
-        });
-    });
-
-    // Close modal functionality
-    document.querySelectorAll('.close').forEach(closeBtn => {
-        closeBtn.addEventListener('click', function() {
-            const modal = this.closest('.modal');
-            modal.style.display = 'none';
-            const iframe = modal.querySelector('iframe');
-            iframe.src = ''; // Stop the video when modal is closed
-        });
-    });
-
-       // Optional: Toggle visibility of iframe when image is clicked
-       const image = document.querySelector('a');
-    const iframe = document.querySelector('iframe');
-    
-    image.addEventListener('click', function(event) {
-        event.preventDefault(); // Prevents the default link behavior
-        iframe.style.display = 'block'; // Show the iframe
-        iframe.src = this.href; // Set the iframe src to the YouTube URL
-    });
-    </script>
+    <div class="footerBottom">
+        <p>copyright @2024 JanakpurCinema | All rights Reserved | Designed By <span class="designer">Pradeep Sah</span></p>
+    </div>
+</footer>
+            <h5></h5>
+            <h5>
+            </h5>
+     
 </body>
 </html>
