@@ -36,14 +36,139 @@
     </nav>
 </nav>
 
-    <nav class="sec-nav">
-        <div class="s-left">
-        <a href="https://pradeepsah29.github.io/cinema" style="text-decoration: none;"><i class="fa fa-home"></i> HOME</a>
+<nav class="sec-nav">
+    <div class="s-left">
+        <!-- Home Link -->
+        <a href="https://pradeepsah29.github.io/cinema" style="text-decoration: none;">
+            <i class="fa fa-home"></i> HOME
+        </a>
+
+        <!-- Link to trigger the iframe -->
+        <a href="#" style="text-decoration: none;" onclick="showStream()">WATCH NPL</a>
+
+        <!-- Links to switch between Server 1 and Server 2 -->
+        <div id="serverOptions" style="display: none; margin-top: 20px;">
+            <button class="server-button" onclick="changeServer(1)">Server 1</button>
+            <button class="server-button" onclick="changeServer(2)">Server 2</button>
+        </div>
+
+        <!-- The iframe that will be shown when the link is clicked -->
+        <iframe id="streamingIframe" src="https://embedsports.me/big-bash-league/big-bash-league-women-final-melbourne-renegades-w-vs-brisbane-heat-w-stream-2" 
+                width="80%" height="600px" marginheight="0" marginwidth="0" scrolling="no" frameborder="0" 
+                allowfullscreen allow="encrypted-media" style="display: none;"></iframe>
+
+        <!-- Button to toggle fullscreen, initially hidden -->
+        <button id="fullscreenButton" onclick="toggleFullscreen()" style="display: none;" class="fullscreen-button">
+            VIEW FULL SCREEN
+        </button>
+
+        <!-- Ticket Rate Link -->
+        <p>
+            <a href="#" style="text-decoration: none;">TICKET RATE</a>
         </p>
-            <a href="#" style="text-decoration: none;">MOVIE</a>
-          <p>
-  <a href="#" style="text-decoration: none;">TICKET RATE</a>
-</p>
+    </div>
+</nav>
+
+<script>
+    function showStream() {
+        // Show the iframe when the link is clicked
+        document.getElementById('streamingIframe').style.display = 'block';
+        
+        // Show the fullscreen button and server selection options
+        document.getElementById('fullscreenButton').style.display = 'inline-block';
+        document.getElementById('serverOptions').style.display = 'block'; // Show the server options
+    }
+
+    function changeServer(serverNumber) {
+        var iframe = document.getElementById('streamingIframe');
+        if (serverNumber === 1) {
+            iframe.src = 'https://stream.crichd.sc/update/star.php'; // Server 1 URL
+        } else if (serverNumber === 2) {
+            iframe.src = 'https://www.youtube.com/embed/P0_mlkFhAo4'; // Server 2 URL
+        }
+    }
+
+    function toggleFullscreen() {
+        var iframe = document.getElementById('streamingIframe');
+        // Check if the iframe is already in fullscreen
+        if (iframe.requestFullscreen) {
+            // If in normal mode, request fullscreen
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            } else {
+                iframe.requestFullscreen();
+            }
+        } else if (iframe.webkitRequestFullscreen) { // Safari
+            if (document.webkitFullscreenElement) {
+                document.webkitExitFullscreen();
+            } else {
+                iframe.webkitRequestFullscreen();
+            }
+        } else if (iframe.msRequestFullscreen) { // IE/Edge
+            if (document.msFullscreenElement) {
+                document.msExitFullscreen();
+            } else {
+                iframe.msRequestFullscreen();
+            }
+        }
+    }
+</script>
+
+<style>
+    /* General styling for the buttons */
+    .server-button, .fullscreen-button {
+        background-color: #4CAF50; /* Green background */
+        color: white; /* White text */
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 2px;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+       margin-top: -20px;
+    }
+
+    /* Hover effects for buttons */
+    .server-button:hover, .fullscreen-button:hover {
+        background-color: #45a049; /* Darker green */
+        transform: translateY(-2px); /* Slight lift effect */
+    }
+
+    /* Focus effect for buttons */
+    .server-button:focus, .fullscreen-button:focus {
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Blue focus shadow */
+    }
+
+    /* Styling for server options container */
+    #serverOptions {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    /* Fullscreen button styling */
+    .fullscreen-button {
+        width: 200px;
+        margin-top: 20px;
+        background-color: #007BFF; /* Blue background */
+    }
+
+    /* Styling for the iframe container */
+    iframe {
+        display: block;
+        margin: 0 auto;
+        border-radius: 10px; /* Rounded corners for iframe */
+    }
+</style>
+
+
+
+
+
 
 
         </div>
