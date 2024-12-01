@@ -48,27 +48,58 @@
         </div>
     </nav>
 
-    <div class="slider"> 
-        <div class="slides">
-            <div class="slide fade">
-                <img src="https://i.postimg.cc/9MqTCFhR/Bulaki-1920x660-698449.png" height="450" width="100%" alt="Image 1">
-            </div>
-            <div class="slide fade">
-                <img src="https://i.postimg.cc/RVTtMDjR/KKM-1920x660-895009.png" height="450" width="100%" alt="Image 2">
-            </div>
-            <div class="slide fade">
-                <img src="https://i.postimg.cc/0Q6QqMPD/Ghar-Juwai-1920x660-114524.png" height="450" width="100%" alt="Image 3">
-            </div>
-            <div class="slide fade">
-                <img src="https://i.postimg.cc/tJxYF1cp/Stree2-1920x660-803390.png" height="450" width="100%" alt="Image 4">
-            </div>
-            <div class="slide fade">
-                <img src="https://i.postimg.cc/y8HtWqgB/Vedaa-1920x660-516100.png" height="450" width="100%" alt="Image 5">
-            </div>
+<div class="slider">
+    <div class="slides">
+        <div class="slide fade">
+            <!-- Wrap the image with an anchor tag to trigger the video in an iframe -->
+            <a href="javascript:void(0);" onclick="openVideo('https://www.youtube.com/embed/dg2gnLxUdr4', this)">
+                <img src="https://i.postimg.cc/hG5BMd6p/Black-and-White-Modern-Sports-Football-Event-Banner-2.png" height="450" width="100%" alt="Slide Image">
+            </a>
         </div>
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
+
+    <!-- Create an iframe container to display the YouTube video in the same page -->
+    <div id="videoContainer" style="display:none; text-align:center;">
+        <iframe id="videoFrame" style="width:100%; height:450px;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <button onclick="closeVideo()">Close Video</button>
+    </div>
+
+    <!-- Navigation buttons -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
+
+<script>
+    // Function to open the YouTube video in the iframe
+    function openVideo(videoUrl, element) {
+        // Show the iframe container
+        document.getElementById('videoContainer').style.display = 'block';
+        
+        // Set the iframe src to the video URL
+        document.getElementById('videoFrame').src = videoUrl;
+
+        // Optionally, hide the image once clicked and show the video in the same place
+        var parentDiv = element.closest('.slide');
+        var image = parentDiv.querySelector('img');
+        image.style.display = 'none';
+    }
+
+    // Function to close the video (hide the iframe container and show the image again)
+    function closeVideo() {
+        // Hide the iframe container
+        document.getElementById('videoContainer').style.display = 'none';
+        
+        // Stop the video by removing the iframe src
+        document.getElementById('videoFrame').src = '';
+
+        // Show all the images again (you can also choose to hide all or just the current one)
+        var images = document.querySelectorAll('.slide img');
+        images.forEach(function(image) {
+            image.style.display = 'block';
+        });
+    }
+</script>
+
     
     <script src="script.js"></script>
    
